@@ -11,8 +11,7 @@ p rds
 #response = rds.client.describe_db_instances()
 p "start"
 
-#ins_name = 'majidev'
-ins_name = 'majibu'
+ins_name = 'rdstest'
 
 p "This rds id is ... " + ins_name
 final_db_snapshot = "#{ins_name}-final-snapshot"

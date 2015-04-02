@@ -29,6 +29,7 @@ response = rds.client.describe_db_instances
       :db_instance_class=>ins[:db_instance_class],
       :availability_zone=>"ap-northeast-1a",
       :multi_az=>false,
+      :publicly_accessible => ins[:publicly_accessible],
   #    :db_name=>"ORCL",
     }
   )
@@ -47,10 +48,11 @@ response = rds.client.describe_db_instances
   rds.client.modify_db_instance(
     {
       :db_instance_identifier => ins[:db_instance_id],
-      :db_security_groups => [ins[:db_security_group_id]],
+      :vpc_security_group_ids => [ins[:vpc_security_group_ids]],
       :db_parameter_group_name => ins[:db_parameter_group],
     }
   )
+      #:db_security_groups => [ins[:db_security_group_id]],
 
   status = "modify"
   while status != "available" do
